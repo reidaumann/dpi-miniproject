@@ -1,5 +1,7 @@
 require "sinatra"
 require "sinatra/reloader"
+require "json"
+require "http"
 
 get("/") do
   "
@@ -8,4 +10,9 @@ get("/") do
   "
 
   erb(:homepage)
+end
+
+get("/color-palette") do
+
+  erb(:palette_gen)
 end
