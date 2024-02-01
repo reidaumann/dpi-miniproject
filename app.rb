@@ -1,8 +1,8 @@
 require "sinatra"
 require "sinatra/reloader"
 require 'uri'
-require "http"
-require 'https'
+require 'net/http'
+require 'net/https'
 require 'json'
 
 def make_abstract_request
