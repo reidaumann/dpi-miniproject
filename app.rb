@@ -1,25 +1,22 @@
 require "sinatra"
 require "sinatra/reloader"
-require "json"
-require "http"
+require 'uri'
+require 'net/http'
 
 def get_color_palette
-  var url = "http://colormind.io/api/";
-  var data = {
-    model : "default",
-    input : [[44,43,44],[90,83,82],"N","N","N"]
-  }
-  
-  var http = new XMLHttpRequest();
-  
-  http.onreadystatechange = function() {
-    if(http.readyState == 4 && http.status == 200) {
-      var palette = JSON.parse(http.responseText).result;
-    }
-  }
-  
-  http.open("POST", url, true);
-  http.send(JSON.stringify(data));
+  url = URI("https://ai-color-generator.p.rapidapi.com/generate-color")
+
+  http = Net::HTTP.new(url.host, url.port)
+  http.use_ssl = true
+
+  request = Net::HTTP::Post.new(url)
+  request["content-type"] = 'application/json'
+  request["X-RapidAPI-Key"] = '39f0b3a00dmsh6ec3586d033e418p1e6320jsn5b6729d40c32'
+  request["X-RapidAPI-Host"] = 'ai-color-generator.p.rapidapi.com'
+  request.body = "{\r\n    \"colorList\": [\r\n        \"#FBE18F\",\r\n        \"#1F271B\"\r\n    ]\r\n}"
+
+  response = http.request(request)
+  puts response.read_body
 
 end
 
