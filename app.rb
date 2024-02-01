@@ -2,8 +2,13 @@ require "sinatra"
 require "sinatra/reloader"
 require 'uri'
 require 'net/http'
+require 'json'
 
-def get_color_palette
+get("/") do
+  erb(:homepage)
+end
+
+get("/color-palette") do
   url = URI("https://ai-color-generator.p.rapidapi.com/generate-color")
 
   http = Net::HTTP.new(url.host, url.port)
@@ -17,14 +22,5 @@ def get_color_palette
 
   response = http.request(request)
   puts response.read_body
-
-end
-
-get("/") do
-  erb(:homepage)
-end
-
-get("/color-palette") do
-  @new_palette=get_color_palette
   erb(:palette_gen)
 end
