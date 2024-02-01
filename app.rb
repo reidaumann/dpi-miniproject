@@ -4,21 +4,20 @@ require 'uri'
 require 'net/http'
 require 'json'
 
+def get_random_quote_list
+  api_url = "https://api.quotable.io/quotes/random?limit=5"
+  data = HTTP.get(api_url)
+  parsed_data = JSON.parse(data)
+  
+  return parsed_data
+
+end
+
 get("/") do
   erb(:homepage)
 end
 
 get("/color-palette") do
-  url = URI("https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=movies&count=10")
-
-  http = Net::HTTP.new(url.host, url.port)
-  http.use_ssl = true
-  
-  request = Net::HTTP::Post.new(url)
-  request["X-RapidAPI-Key"] = '39f0b3a00dmsh6ec3586d033e418p1e6320jsn5b6729d40c32'
-  request["X-RapidAPI-Host"] = 'andruxnet-random-famous-quotes.p.rapidapi.com'
-  
-  response = http.request(request)
-  puts response.read_body
+  @quote_list = get_random_quote_list
   erb(:palette_gen)
 end

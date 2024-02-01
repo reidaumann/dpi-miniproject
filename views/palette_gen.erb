@@ -1,9 +1,22 @@
-  <main>
-   <div id="animated-text-container">
-    <h2 id="animated-text">Welcome! This app is designed to produce a random color palette for you!</h2>
-   </div> 
-  </main>
+<h1>Wise Quotes!</h1>
 
-  <footer>
-    <p>Color Palette Generator API Mini-project by Reid Aumann</p>
-  </footer>
+<div class="container">
+    <div class="row">
+      <% @quote_list.each do |quote| %>
+          <div class="entry">
+            <div class="quote"><%= quote["content"] %></div>
+            <div class="author">-<%= quote["author"] %></div>
+          </div>
+      <% end %>
+      </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+      <form action="/">
+        <button class="button">New Quotes!</button>
+      </form>
+    </div>
+
+</div>
