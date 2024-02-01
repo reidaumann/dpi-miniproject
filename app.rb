@@ -6,7 +6,7 @@ require 'net/http'
 require 'json'
 
 def get_random_quote_list
-  api_url = "https://api.quotable.io/quotes/random?limit=5"
+  api_url = "http://colormind.io/api/"
   data = HTTP.get(api_url)
   parsed_data = JSON.parse(data)
   
@@ -19,6 +19,6 @@ get("/") do
 end
 
 get("/color-palette") do
-  @quote_list = get_random_quote_list
+  @color_palette = get_random_quote_list
   erb(:palette_gen)
 end
