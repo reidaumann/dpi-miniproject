@@ -20,11 +20,13 @@ def make_abstract_request
   rescue StandardError => error
     puts "Error (#{ error.message })"
 end
+
 get("/") do
   erb(:homepage)
 end
 
 get("/color-palette") do
-  make_abstract_request()
+  @holiday=make_abstract_request
+  
   erb(:palette_gen)
 end
