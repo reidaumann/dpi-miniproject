@@ -19,6 +19,8 @@ def make_abstract_request
   puts "Response body: #{ response.body }"
   rescue StandardError => error
     puts "Error (#{ error.message })"
+
+  pp response
 end
 
 get("/") do
@@ -26,7 +28,7 @@ get("/") do
 end
 
 get("/color-palette") do
-  pp response.text
+  make_abstract_request
 
   erb(:palette_gen)
 end
