@@ -3,16 +3,21 @@ require "sinatra/reloader"
 require "json"
 require "http"
 
-get("/") do
-  "
-  <h1>Welcome to your Sinatra App!</h1>
-  <p>Define some routes in app.rb</p>
-  "
+def get_color_palette
+  api_url = "http://colormind.io/api/"
 
+  data = HTTP.get(api_url)
+  parsed_data = JSON.parse(data)
+  
+  return parsed_data
+
+end
+
+get("/") do
   erb(:homepage)
 end
 
 get("/color-palette") do
-
+  @new_palette=get_color_palette
   erb(:palette_gen)
 end
