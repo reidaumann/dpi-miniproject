@@ -26,7 +26,7 @@ get("/") do
 end
 
 get("/color-palette") do
-  @holiday=make_abstract_request
-  
+  pp response.text
+
   erb(:palette_gen)
 end
