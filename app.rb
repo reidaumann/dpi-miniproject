@@ -29,6 +29,5 @@ end
 
 get("/color-palette") do
   make_abstract_request
-
   erb(:palette_gen)
 end
