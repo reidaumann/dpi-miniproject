@@ -1,18 +1,3 @@
-# sinatra-template
+# dpi-miniproject
 
-Use this repository to create new Sinatra apps. 
-
-Optionally, to use `ActiveRecord` for database operations, add to the `app.rb`:
-
-```ruby
-require "sinatra/activerecord"
-```
-
-And in the `config/environment.rb` file add this code block:
-
-```ruby
-configure do
-  # setup a database connection
-  set(:database, { adapter: "sqlite3", database: "db/development.sqlite3" })
-end
-```
+This is an app that connects with API to generate a random holiday for people who click the button! You can load the website by going to https://reid-holiday-generator.onrender.com
