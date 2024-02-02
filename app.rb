@@ -22,7 +22,6 @@ def make_abstract_request
   
   data_hash=data.first
   @holiday_name=data_hash.fetch("name")
-  @holiday_descrip=data_hash.fetch("description")
   @holiday_day=data_hash.fetch("date_day")
   @holiday_month=data_hash.fetch("date_month")
 end
@@ -31,7 +30,7 @@ get("/") do
   erb(:homepage)
 end
 
-get("/color-palette") do
+get("/holiday-gen") do
   make_abstract_request()
-  erb(:palette_gen)
+  erb(:hol_gen)
 end
