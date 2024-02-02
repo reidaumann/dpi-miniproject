@@ -13,7 +13,7 @@ def make_abstract_request
   country = 'US'
   year = 2020
   month = rand(1..12)
-  day = rand(1..30)
+  day = rand(1..28)
   
   url = URI("https://holidays.abstractapi.com/v1/?api_key=#{api_key}&country=#{country}&year=#{year}&month=#{month}&day=#{day}")
   
